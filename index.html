@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSM Community - MANUSIA SUKA MEWING</title>
+    <!-- Mengambil Font dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Mengambil Icon Library (FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #6C63FF; /* Ungu Neon */
+            --secondary-color: #00D2FF; /* Biru Cyan */
+            --bg-dark: #121212;
+            --bg-card: #1E1E1E;
+            --text-main: #E0E0E0;
+            --text-muted: #A0A0A0;
+            --border-color: #333;
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            border-bottom: 2px solid var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--secondary-color);
+            text-shadow: 0 0 5px rgba(0, 210, 255, 0.5);
+        }
+
+        /* Mobile Menu Toggle (Hidden on Desktop) */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.9)), 
+                        url('https://picsum.photos/seed/gtacity/1920/1080.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--primary-color), #8F44FF);
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(108, 99, 255, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            margin-left: 10px;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .section-title .line {
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        /* --- TOP SCRIPTERS SECTION --- */
+        .scripters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.2);
+        }
+
+        .rank-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+
+        .rank-1 { background: linear-gradient(45deg, #FFD700, #FFA500); color: #000; }
+        .rank-2 { background: linear-gradient(45deg, #C0C0C0, #E0E0E0); color: #000; }
+        .rank-3 { background: linear-gradient(45deg, #CD7F32, #8B4513); color: #fff; }
+
+        .card-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            filter: grayscale(80%);
+            transition: 0.3s;
+        }
+
+        .card:hover .card-img {
+            filter: grayscale(0%);
+        }
+
+        .card-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-body h3 {
+            margin-bottom: 5px;
+            font-size: 1.25rem;
+        }
+
+        .card-body .role {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .social-icons a {
+            margin: 0 8px;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- DOWNLOAD SECTION --- */
+        .download-container {
+            background-color: var(--bg-card);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .download-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .download-table th, .download-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .download-table th {
+            color: var(--secondary-color);
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .download-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .version {
+            background-color: #333;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #fff;
+        }
+
+        .btn-sm {
+            padding: 6px 15px;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0a0a0a;
+            padding: 50px 0 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-heading);
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .footer-col p {
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .download-container {
+                overflow-x: auto;
+            }
+            
+            .download-table th, .download-table td {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">MSM <span>Community</span></div>
+            <nav>
+                <ul>
+                    <li><a href="https://chat.whatsapp.com/JGQKhv15FHI82ZlGUxHz9Q" class="active">Comunity Msm</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#top-cheater">Top Cheater Ngawi</a></li>
+                    <li><a href="#download">Download Script</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>MANUSIA SUKA MEWING</h1>
+            <p>Selamat datang di Komunitas GTA SA:MP terbaik. Tempat berkumpulnya para scripter handal dan para cheater gta samp.</p>
+            <div class="cta-buttons">
+                <a href="#download" class="btn">Download Script</a>
+                <a href="#top-cheater" class="btn btn-outline">Top Cheater MSM</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tentang MSM</h2>
+                <div class="line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-img">
+                    <!-- Placeholder image dengan tema gaming -->
+                    <img src="https://picsum.photos/seed/gtafivem/600/400" alt="Tentang MSM">
+                </div>
+                <div class="about-text">
+                    <h3>Mewing Di Dunia SA:MP</h3>
+                    <p><strong>MSM (Manusia Suka Mewing)</strong> adalah komunitas yang dibentuk oleh (ZaxxMewing) untuk terus berkembang dalam dunia modding GTA San Andreas Multiplayer.</p>
+                    <p>Kami menghadirkan pengalaman menjajah yang seru dan mendebarkan. Bergabunglah bersama komunitas kami dan jadilah bagian dari petualangan yang tak terlupakan di kota fiksi yang penuh intrik dan kejahatan.</p>
+                    <p>Kami juga menyediakan wadah bagi para scripter pemula hingga ahli untuk berbagi ilmu, berbagi script gratis, dan tentu saja, mewing bersama. Dengan sistem yang terorganisir, kami memastikan setiap script yang dibagikan aman dan berkualitas.</p>
+                    <ul>
+                        <li><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 10px;"></i> Script Gratis</li>
+                        <li><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 10px;"></i> Si Zaxx Baik</li>
+                        <li><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 10px;"></i> Komunitas Solid</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top 3 Scripters Section -->
+    <section id="top-cheater">
+        <div class="container">
+            <div class="section-title">
+                <h2>Top Cheater Ngawi MSM</h2>
+                <div class="line"></div>
+                <p style="margin-top: 10px; color: var(--text-muted);">Rank Cheater Baik MSM</p>
+            </div>
+
+            <div class="scripters-grid">
+                <!-- Scripter 1 -->
+                <div class="card">
+                    <div class="rank-badge rank-1">#1</div>
+                    <img src="https://picsum.photos/seed/user1/400/300" alt="Scripter 1" class="card-img">
+                    <div class="card-body">
+                        <h3>ZaxxMewing</h3>
+                        <span class="role">Lead Developer</span>
+                        <p style="font-size: 0.9rem; color: #888; margin-bottom: 15px;">Cheater baik yang membantai para server berotak donate dan berbau fivem.</p>
+                        <div class="social-icons">
+                            <a href="https://discord.gg"><i class="fab fa-discord"></i></a>
+                            <a href="https://youtube.com/@zaxxmewings"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.tiktok.com/@zaxxcihuyyy"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scripter 2 -->
+                <div class="card">
+                    <div class="rank-badge rank-2">#2</div>
+                    <img src="https://picsum.photos/seed/user2/400/300" alt="Scripter 2" class="card-img">
+                    <div class="card-body">
+                        <h3>None</h3>
+                        <span class="role">None</span>
+                        <p style="font-size: 0.9rem; color: #888; margin-bottom: 15px;">None.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-discord"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scripter 3 -->
+                <div class="card">
+                    <div class="rank-badge rank-3">#3</div>
+                    <img src="https://picsum.photos/seed/user3/400/300" alt="Scripter 3" class="card-img">
+                    <div class="card-body">
+                        <h3>None</h3>
+                        <span class="role">None</span>
+                        <p style="font-size: 0.9rem; color: #888; margin-bottom: 15px;">None.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-discord"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" style="background-color: #181818;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Download Script</h2>
+                <div class="line"></div>
+                <p style="margin-top: 10px; color: var(--text-muted);">Koleksi script buatan komunitas MSM untuk membantai server berbau fivem</p>
+            </div>
+
+            <div class="download-container">
+                <table class="download-table">
+                    <thead>
+                        <tr>
+                            <th>Nama Script</th>
+                            <th>Versi</th>
+                            <th>Credits</th>
+                            <th>Tanggal Upload</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-file-code" style="margin-right: 8px; color: var(--primary-color);"></i> Weapon Bypass</td>
+                            <td><span class="version">1.0</span></td>
+                            <td>ZaxxMewing</td>
+                            <td>8 Jan 2026</td>
+                            <td><a href="https://www.mediafire.com/file/ezyijjdhdfrdr5i/%255Bmsm%255D_Weapon_Bypass_By_%2540ZaxxMewing.lua/file" class="btn btn-sm">Download</a></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-file-code" style="margin-right: 8px; color: var(--primary-color);"></i> Server Crasher</td>
+                            <td><span class="version">2.0</span></td>
+                            <td>ZaxxMewing</td>
+                            <td>9 Jan 2026</td>
+                            <td><a href="https://www.mediafire.com/file/jre8b5gl9venpko/Server_Crasher_By_ZaxxMewing.lua/file" class="btn btn-sm">Download</a></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-file-code" style="margin-right: 8px; color: var(--primary-color);"></i> Zaxx Menu Mobile</td>
+                            <td><span class="version">1.4.5</span></td>
+                            <td>ZaxxMewing</td>
+                            <td>9 Jan 2026</td>
+                            <td><a href="https://www.mediafire.com/file/p5qihv9lat5le33/ZAXX_MENU_MOBILE_V1.4.5.lua/file" class="btn btn-sm">Download</a></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-file-code" style="margin-right: 8px; color: var(--primary-color);"></i> Spawn Gun Gacor</td>
+                            <td><span class="version">1.2 Beta</span></td>
+                            <td>ZaxxMewing</td>
+                            <td>9 Jan 2026</td>
+                            <td><a href="https://www.mediafire.com/file/zboppnwif0gf5ng/%255Bmsmweap%255D_Spawn_Gun_Gacor_By_%2540ZaxxMewing.lua/file" class="btn btn-sm">Download</a></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-file-code" style="margin-right: 8px; color: var(--primary-color);"></i> Anti Nabrak Tiang</td>
+                            <td><span class="version">1.0</span></td>
+                            <td>IDK</td>
+                            <td>9 Jan 2026</td>
+                            <td><a href="https://www.mediafire.com/file/awcni9l3bapn3bc/ANTI_NUBRUK_TIANG.lua/file" class="btn btn-sm">Download</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 15px;">MSM <span>Community</span></div>
+                    <p>Manusia Suka Mewing - Komunitas GTA SA:MP terdepan untuk scripting dan membantai bersama.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigasi Cepat</h4>
+                    <ul>
+                        <li><a href="#">Beranda</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#top-cheater">Hall of Fame</a></li>
+                        <li><a href="#download">Download</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hubungi Kami</h4>
+                    <ul>
+                        <li><i class="fab fa-discord"></i> discord.gg/msm</li>
+                        <li><i class="fas fa-envelope"></i> admin@msm-community.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Los Santos, SA</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 MSM Community. All Rights Reserved By ZaxxMewing.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple Script for Smooth Scroll -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
